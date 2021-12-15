@@ -1,0 +1,63 @@
+<!--
+  pages/store/info/info.wxml
+  选择单一门店展示：（按日，周，月切换）
+1.打印：今日打印总数，今日报损总数，今日已用完总数。
+2.物料：今日物料总数，今日物料总数，今天已用完物料总数
+  -->
+<view class="container">
+  <view class="dateMod">
+    <view class="dateType">
+      <van-dropdown-menu>
+        <van-dropdown-item model:value="{{ dateType }}" options="{{ dateTypeOption }}" />
+      </van-dropdown-menu>
+    </view>
+    <view class="dateValue">
+      <view wx:if="{{ dateType==0 }}" bindtap="chooseDate" class="dayDate">
+        <text>{{ dayDate }}</text>
+      </view>
+      <van-dropdown-menu wx:if="{{ dateType==1 }}">
+        <van-dropdown-item value="{{ weekDate }}" options="{{ weekOption }}" />
+      </van-dropdown-menu>
+      <van-dropdown-menu wx:if="{{ dateType==2 }}">
+        <van-dropdown-item value="{{ monthDate }}" options="{{ monthOption }}" />
+      </van-dropdown-menu>
+    </view>
+  <van-popup
+    show="{{ dateShow }}"
+    position="bottom"
+    custom-style="height: 40%;"
+    bind:close="onCloseDate"
+  >
+    <van-datetime-picker
+      type="date"
+      value="{{ currentDate }}"
+      bind:confirm="resetDate"
+      bind:cancel="onCloseDate"
+      max-date="{{ maxDate }}"
+      formatter="{{ formatter }}"
+    />
+  </van-popup>
+  </view>
+  <view class="info">
+    <view class="printList">
+      <text class="title">打印情况</text>
+      <view class="item">
+        <view wx:for="{{printList}}">
+          <text>{{item.label}}</text>
+          <text class="count">{{item.value}}</text>
+          <van-progress percentage="{{item.percent}}" stroke-width="8" color="#5e7cf8" />
+        </view>
+      </view>
+    </view>
+    <view class="materielList">
+      <text class="title">物料情况</text>
+      <view class="item">
+        <view wx:for="{{materielList}}">
+          <text>{{item.label}}</text>
+          <text class="count">{{item.value}}</text>
+          <van-progress percentage="{{item.percent}}" stroke-width="8" color="#f15369" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

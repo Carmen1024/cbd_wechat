@@ -1,0 +1,43 @@
+<!--
+  pages/store/list/list.wxml
+  督导所有管辖门店列表，点击进入门店详细信息页面
+-->
+<view class="container">
+  <view class="selectMod" style="padding-top: {{statusBarHeight}}px;">
+    <van-search 
+      value="{{ selectName }}" 
+      placeholder="输入门店名称" 
+      bind:change="onChange"
+      bind:search="onSearch"
+    />
+  </view>
+  <view class="storeList" style="padding-top: {{statusBarHeight+50}}px;">
+    <view class="storeItem" wx:for="{{ storeList }}" bindtap="toInfo" data-item="{{item}}">
+      <view class="default">
+        <image src="./../../../images/logo.jpg"></image>
+        <view>
+          <text class="storeName">{{item.name}}</text>
+          <text class="storeAddr">{{item.addr}}</text>
+        </view>
+      </view>
+      <view class="info">
+        <view class="printList">
+          <view class="title"><text>打印</text><text>10000</text></view>
+          <view class="item">
+            <!-- 1.打印：今日打印总数，今日报损总数，今日已用完总数。 -->
+            <!-- 2.物料：今日物料总数，今日物料总数，今天已用完物料总数 -->
+            <text>报损：1000</text>
+            <text>用完：9000</text>
+          </view>
+        </view>
+        <view class="materielList">
+          <view class="title"><text>物料</text><text>9000</text></view>
+          <view class="item">
+            <text>报损：500</text>
+            <text>用完：6000</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
