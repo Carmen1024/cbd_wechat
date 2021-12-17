@@ -1,12 +1,12 @@
 <!--pages/user/user.wxml-->
 <view class="user-container">
+  <image class="bg" src="./../../images/bg.jpg" mode="widthFix"></image>
   <view class="userinfo">
     <block wx:if="{{canIUseOpenData}}">
       <view class="userinfo-avatar" bindtap="bindViewTap">
         <open-data type="userAvatarUrl"></open-data>
       </view>
       <open-data type="userNickName"></open-data>
-
     </block>
     <block wx:elif="{{!hasUserInfo}}">
       <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
@@ -17,4 +17,5 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  
 </view>

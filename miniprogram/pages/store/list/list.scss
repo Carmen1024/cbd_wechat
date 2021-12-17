@@ -29,6 +29,7 @@
         box-shadow: 0 0 10px 2px rgb(235, 234, 234);
         border-radius: 5px;
         .default{
+
           display: flex;
           height: 60px;
           image{
@@ -46,47 +47,6 @@
             .storeName{
               font-weight:bold;
               font-size: 18px;
-            }
-          }
-        }
-        .info{
-          margin-top: 10px;
-          padding-top:10px;
-          border-top: solid 1px #ddd;
-          display: flex;
-          .printList,.materielList{
-            flex: 1;
-            // text-align: center;
-          }
-          .title{
-            height: 20px;
-            line-height: 20px;
-            margin-right: 10px;
-            // F9CDAD
-            background-color: #c9d3fc;
-            text{
-              display: inline-block;
-              line-height: 20px;
-            }
-            text:first-child{
-              margin-right: 5px;
-              padding:0 5px;
-              font-weight: bold;
-              background-image: linear-gradient(to right, #c9d3fc , #5e7cf8);
-            }
-          }
-          .item{
-            // "#f15369""#4fbdaa""#5169ca",
-            text{
-              margin:5px 0;
-              padding-left:3px;
-              height: 20px;
-              line-height: 20px;
-              display: block;
-              border-left: solid 3px #f15369;
-              &:nth-child(2){
-                border-color: #4fbdaa;
-              }
             }
           }
         }

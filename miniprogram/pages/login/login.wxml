@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class="login-container">
+  <view class="title">
+    <image src="./../../images/logo.jpg"></image>
+    <text>督导小程序</text>
+    <text>日常信息监测</text>
+  </view>
+  <view class="tips" wx:if="{{loading}}">
+    <view>您的帐号正在审核，请等待！</view>
+  </view>
+  <view class="auth" wx:else>
+    <button 
+    type="primary" 
+    open-type="getPhoneNumber" 
+    bindgetphonenumber="getPhoneNumber">
+      授权微信手机号
+    </button>
+    <button disabled="true" plain="true">手机号登录</button>
+  </view>
+</view>

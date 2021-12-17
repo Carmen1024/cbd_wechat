@@ -8,24 +8,18 @@
   1.打印：今日打印总数，今日报损总数，今日已用完总数。
   2.物料：今日物料总数，今日物料报损总数，今天已用完物料总数
 -->
-<view class="user-container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      
-    </block>
+<view class="container">
+  <view class="indexMsg">
+    <view class="title">
+      <image src="./../../images/logo.jpg"></image>
+      <text>日常信息监测</text>
+    </view>
+    <view class="tips">
+      <view><image src="./../../images/tip.png"></image>实时数据可能有短暂延迟</view>
+      <view><image src="./../../images/tip.png"></image>如数据有异常请联系管理员</view>
+    </view>
   </view>
-  <regionInfo></regionInfo>
+  <!-- 监测数据 -->
+  <regionInfo />
+  <!-- 引入 -->
 </view>

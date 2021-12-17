@@ -4,6 +4,7 @@ Component({
     selected: 0,
     color: "#7A7E83",
     selectedColor: "#152a7d",
+    backgroundColor:'#fafafa',
     list: [{
       pagePath: "/pages/index/index",
       iconPath: "/images/index.png",

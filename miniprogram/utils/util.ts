@@ -7,7 +7,7 @@ export const formatTime = (date: Date) => {
   const second = date.getSeconds()
 
   return (
-    [year, month, day].map(formatNumber).join('/') +
+    [year, month, day].map(formatNumber).join('-') +
     ' ' +
     [hour, minute, second].map(formatNumber).join(':')
   )
@@ -21,7 +21,7 @@ const formatNumber = (n: number) => {
 /**
  * 时间戳格式转换以及计算
  * */
-export const formatDate = (time = 0, format = 'YYYY-MM-DD hh:mm:ss') => {
+export const formatDate = (time, format = 'YYYY-MM-DD hh:mm:ss') => {
 
   const now = new Date().getTime()
 
@@ -31,16 +31,15 @@ export const formatDate = (time = 0, format = 'YYYY-MM-DD hh:mm:ss') => {
 
   const date = new Date(time)
 
-  date.getMonth()
   /** 参数集 年-月-日 时:分:秒 */
-  const arg = {
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate(),
-    hours: date.getHours(),
-    minutes: date.getMinutes(),
-    seconds: date.getSeconds()
-  }
+  const year = date.getFullYear();
+  let month = (date.getMonth() + 1)<10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+  let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+  let hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+  let minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+  let seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+  
+  const arg = { year,month,day,hours,minutes,seconds }
 
   /** 判断有没有指定的时间格式 */
   switch (format) {

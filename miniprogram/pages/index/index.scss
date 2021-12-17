@@ -1,21 +1,35 @@
-.user-container{
+.container{
   height: 100vh;
-  .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #aaa;
-  }
-  
-  .userinfo-avatar {
-    overflow: hidden;
-    width: 128rpx;
-    height: 128rpx;
-    margin: 20rpx;
-    border-radius: 50%;
-  }
-  
-  .usermotto {
-    margin-top: 200px;
+  .indexMsg{
+    padding:10px 20px;
+    .title{
+      display: flex;
+      line-height: 50px;
+      image{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      text{
+        padding-left: 10px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+    .tips{
+      margin-left: 60px;
+      view{
+        display: flex;
+        line-height: 15px;
+        margin-bottom:10px;
+        color:#666;
+        image{
+          width: 15px;
+          height: 15px;
+          margin-right: 5px;
+        }
+      }
+    }
+
   }
 }

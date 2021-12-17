@@ -1,0 +1,55 @@
+/* pages/region/info/info.wxss */
+
+.container{
+  width: 100vw;
+  .userInfo{
+    display: flex;
+    .userItem{
+      flex:1;
+      margin:10px;
+      padding:10px;
+      height: 100px;
+      box-shadow: 0 0 2px 2px rgb(235, 234, 234);
+      border-radius: 5px;
+      text-align: center;
+      image{
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+  }
+  .regionInfo{
+    .printList,.materielList{
+      margin: 10px;
+      padding:10px;
+      box-shadow: 0 0 2px 2px rgb(235, 234, 234);
+      border-radius: 5px;
+      display: flex;
+      .title{
+        flex:1;
+        margin:10px;
+        border-right:solid 2px #ebebeb;
+        text{
+          line-height: 50px;
+          &:first-child{
+            font-size: 18px;
+          }
+        }
+      }
+      .item{
+        flex:1;
+        // "#f15369""#4fbdaa""#5169ca",
+      }
+      text{
+        display: block;
+        line-height: 30px;
+        text-align: center;
+        &:nth-child(2n+1){
+          font-weight: bold;
+          color: #000;
+        }
+      }
+    }
+  }
+}

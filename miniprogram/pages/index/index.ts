@@ -10,18 +10,22 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    active:false
   },
   // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs',
-    })
-  },
-  onLoad() {
+  onLoad(options) {
     // @ts-ignore
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
+      })
+    }
+    //判断账号是否已经激活
+    const active = wx.getStorageSync('active') || false;
+    console.log(options);
+    if(!active){
+      wx.redirectTo({
+        url: '../login/login',
       })
     }
   },

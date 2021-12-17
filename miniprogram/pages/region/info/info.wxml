@@ -1,2 +1,39 @@
 <!--pages/region/info/info.wxml-->
-<text>pages/region/info/info.wxml</text>
+<view class="container">
+  <view class="userInfo">
+    <view class="userItem" bindtap="mapContext">
+      <image src="./../../../images/region_bg.png"></image>
+      <view>{{userInfo.u_region}}</view>
+    </view>
+    <view class="userItem" bindtap="toStoreList">
+      <image src="./../../../images/store_bg.png"></image>
+      <view>查看{{userInfo.u_store}}家门店信息</view>
+    </view>
+  </view>
+  <view class="regionInfo">
+    <view class="printList" data-type="1" bindtap="toList">
+      <view class="title">
+        <text>今日打印总数</text>
+        <text>10000</text>
+      </view>
+      <view class="item">
+        <!-- 1.打印：今日打印总数，今日报损总数，今日已用完总数。 -->
+        <!-- 2.物料：今日物料总数，今日物料总数，今天已用完物料总数 -->
+        <text>报损</text><text>1000</text>
+        <text>用完</text><text>5000</text>
+      </view>
+    </view>
+    <view class="materielList" data-type="2" bindtap="toList">
+      <view class="title">
+        <text>今日物料总数</text>
+        <text>10000</text>
+      </view>
+      <view class="item">
+        <text>报损</text>
+        <text>500</text>
+        <text>用完</text>
+        <text>6000</text>
+      </view>
+    </view>
+  </view>
+</view>
