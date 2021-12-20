@@ -45,17 +45,38 @@
         <view wx:for="{{printList}}">
           <text>{{item.label}}</text>
           <text class="count">{{item.value}}</text>
-          <van-progress percentage="{{item.percent}}" stroke-width="8" color="#5e7cf8" />
+          <van-progress percentage="{{item.percent}}" stroke-width="10" color="#5e7cf8" />
         </view>
       </view>
     </view>
     <view class="materielList">
       <text class="title">物料情况</text>
-      <view class="item">
-        <view wx:for="{{materielList}}">
-          <text>{{item.label}}</text>
-          <text class="count">{{item.value}}</text>
-          <van-progress percentage="{{item.percent}}" stroke-width="8" color="#f15369" />
+      <!-- <view class="item">
+        <view wx:for="{{detailList}}" class="detail">
+          <text>{{item.m_name}}{{item.clf_name?'('+item.clf_name+')':''}}</text>
+          <view>
+            <text>总数：{{item.value1}}</text>
+            <text>报损：{{item.value2}}</text>
+            <text>已用完：{{item.value3}}</text>
+          </view>
+        </view>
+      </view> -->
+      <view class="can_item">
+        <view class="tip">
+          <view><icon></icon>总数</view>
+          <view><icon></icon>报损</view>
+          <view><icon></icon>已用完</view>
+        </view>
+        <view wx:for="{{detailList}}" class="detail">
+          <view class="can_title">
+            <view>{{item.m_name}}</view>
+            <view>{{item.clf_name?'('+item.clf_name+')':''}}</view>
+          </view>
+          <view class="can_data">
+            <view><text style="width:{{item.percent1+'%'}}">{{item.value1}}</text></view>
+            <view><text style="width:{{item.percent2+'%'}}">{{item.value2}}</text></view>
+            <view><text style="width:{{item.percent3+'%;'}}">{{item.value3}}</text></view>
+          </view>
         </view>
       </view>
     </view>

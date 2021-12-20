@@ -2,28 +2,56 @@
 
 .container{
   width: 100vw;
-  .userInfo{
+  .msgInfo{
     display: flex;
-    .userItem{
-      flex:1;
+    .msgItem{
+      position: relative;
+      width: 50%;
       margin:10px;
       padding:10px;
       height: 100px;
-      box-shadow: 0 0 2px 2px rgb(235, 234, 234);
+      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
       border-radius: 5px;
-      text-align: center;
       image{
-        width: 80px;
-        height: 80px;
+        position:absolute;
+        width: 40px;
+        height: 40px;
+        bottom:10px;
+        right: 10px;
+      }
+      view{
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+      }
+      text{
+        line-height: 40px;
+        font-size: 16px;
       }
     }
-
   }
   .regionInfo{
+    .regionTitle{
+      padding-left:10px;
+      height: 30px;
+      line-height: 30px;
+      image{
+        float: left;
+        margin-top: 5px;
+        width: 20px;
+        height: 20px;
+      }
+      text{
+        padding-left: 5px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
     .printList,.materielList{
+      position: relative;
       margin: 10px;
       padding:10px;
-      box-shadow: 0 0 2px 2px rgb(235, 234, 234);
+      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
       border-radius: 5px;
       display: flex;
       .title{
@@ -32,9 +60,6 @@
         border-right:solid 2px #ebebeb;
         text{
           line-height: 50px;
-          &:first-child{
-            font-size: 18px;
-          }
         }
       }
       .item{
@@ -49,6 +74,31 @@
           font-weight: bold;
           color: #000;
         }
+      }
+      image{
+        position:absolute;
+        width: 30px;
+        height: 30px;
+        right: 10px;
+        top:50%;
+        margin-top: -15px;
+      }
+    }
+    .mapInfo{
+      position: relative;
+      margin:10px;
+      padding:10px;
+      height: 40px;
+      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
+      border-radius: 5px;
+      line-height: 40px;
+      font-size: 16px;
+      image{
+        position:absolute;
+        width: 30px;
+        height: 30px;
+        right: 10px;
+        top:15px;
       }
     }
   }

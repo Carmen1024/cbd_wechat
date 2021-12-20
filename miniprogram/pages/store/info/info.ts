@@ -45,15 +45,57 @@ Page({
       // 今日打印总数，今日报损总数，今日已用完总数。
       // 2.物料：今日物料总数，今日物料报损总数，今天已用完物料总数
     printList:[
-      {label:'当日总数',value:'10000',percent:100},
-      {label:'当日报损总数',value:'1000',percent:10},
-      {label:'当日已用完总数',value:'9000',percent:90},
+      {label:'总数',value:'10000',percent:100},
+      {label:'报损总数',value:'1000',percent:10},
+      {label:'已用完总数',value:'9000',percent:90},
     ],
     materielList:[
-      {label:'当日总数',value:'10000',percent:100},
-      {label:'当日报损总数',value:'1000',percent:10},
-      {label:'当日已用完总数',value:'6000',percent:60},
+      {label:'总数',value:'10000',percent:100},
+      {label:'报损总数',value:'1000',percent:10},
+      {label:'已用完总数',value:'6000',percent:60},
     ],
+    detailList:[
+      {
+        "m_name": "全部",
+        "clf_name": "",
+        percent1:100,
+        percent2:10,
+        percent3:90,
+        value1:100,
+        value2:10,
+        value3:90
+      },
+      {
+        "m_name": "葡萄",
+        "clf_name": "水果类",
+        percent1:100,
+        percent2:10,
+        percent3:90,
+        value1:100,
+        value2:10,
+        value3:90
+      },
+      {
+        "m_name": "佛手",
+        "clf_name": "水果类",
+        percent1:100,
+        percent2:10,
+        percent3:90,
+        value1:100,
+        value2:10,
+        value3:90
+      },
+      {
+        "m_name": "香茅",
+        "clf_name": "水果类",
+        percent1:100,
+        percent2:10,
+        percent3:90,
+        value1:100,
+        value2:10,
+        value3:90
+      }
+    ]
   },
   /**
    * 生命周期函数--监听页面加载

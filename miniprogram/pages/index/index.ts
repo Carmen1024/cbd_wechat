@@ -21,13 +21,13 @@ Page({
       })
     }
     //判断账号是否已经激活
-    const active = wx.getStorageSync('active') || false;
-    console.log(options);
-    if(!active){
-      wx.redirectTo({
-        url: '../login/login',
-      })
-    }
+    // const active = wx.getStorageSync('active') || false;
+    // console.log(options);
+    // if(!active){
+    //   wx.redirectTo({
+    //     url: '../login/login',
+    //   })
+    // }
   },
   onShow(){
     if (typeof this.getTabBar === 'function' &&

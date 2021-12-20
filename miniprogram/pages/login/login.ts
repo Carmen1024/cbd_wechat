@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loading:false
+    loading:true
   },
   getPhoneNumber (e) {
     console.log(e.detail.code);

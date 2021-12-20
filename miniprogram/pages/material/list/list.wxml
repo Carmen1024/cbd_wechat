@@ -1,0 +1,24 @@
+<!--
+  所有物料列表，点击进入物料详细信息页面
+-->
+<view class="container">
+  <view class="selectMod" style="padding-top: {{statusBarHeight}}px;">
+    <van-search 
+      value="{{ selectName }}" 
+      placeholder="输入物料名称" 
+      bind:change="onChange"
+      bind:search="onSearch"
+    />
+  </view>
+  <view class="materialList" style="padding-top: {{statusBarHeight+50}}px;">
+    <view class="materialItem" wx:for="{{ materialList }}" bindtap="toInfo" data-item="{{item}}">
+      <view class="default">
+        <image src="./../../../images/logo.jpg"></image>
+        <view>
+          <text class="materialName">{{item.m_name}}</text>
+          <text class="materialAddr">{{item.clf_name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

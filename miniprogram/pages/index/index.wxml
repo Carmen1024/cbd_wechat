@@ -9,6 +9,7 @@
   2.物料：今日物料总数，今日物料报损总数，今天已用完物料总数
 -->
 <view class="container">
+
   <view class="indexMsg">
     <view class="title">
       <image src="./../../images/logo.jpg"></image>
@@ -16,7 +17,7 @@
     </view>
     <view class="tips">
       <view><image src="./../../images/tip.png"></image>实时数据可能有短暂延迟</view>
-      <view><image src="./../../images/tip.png"></image>如数据有异常请联系管理员</view>
+      <view><image src="./../../images/tip.png"></image>如数据有异常请及时联系管理员</view>
     </view>
   </view>
   <!-- 监测数据 -->

@@ -14,7 +14,8 @@ Component({
     userInfo:{
       u_name:'',
       u_region:'四川省成都市天府新区',
-      u_store:16
+      u_store:16,
+      materialCount:79
     },
   },
 
@@ -23,8 +24,13 @@ Component({
    */
   methods: {
     toStoreList(){
-      wx.navigateTo({
-        url: '../region/list/list'
+      wx.switchTab({
+        url: '../store/list/list'
+      })
+    },
+    toMaterialList(){
+      wx.switchTab({
+        url: '../material/list/list'
       })
     },
     toList(e){

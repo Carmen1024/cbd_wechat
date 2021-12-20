@@ -64,9 +64,22 @@
       line-height: 40px;
     
       .item{
+        margin-bottom: 10px;
         padding:10px;
         border-radius: 5px;
-        box-shadow: 0 0 5px 5px rgb(235, 234, 234);
+        box-shadow: 0 0 10px 2px rgb(235, 234, 234);
+        .detail{
+          border-bottom: solid 1px #ddd;
+          view{
+            display: flex;
+            text{
+              flex:1;
+            }
+          }
+          &:last-child{
+            border:none;
+          }
+        }
       }
       .van-progress{
         margin: 10px 0;
@@ -78,6 +91,68 @@
       }
       .count{
         float: right;
+      }
+      .can_item{
+        .tip{
+          margin:10px 0;
+          display: flex;
+          line-height: 20px;
+          icon{
+            float: left;
+            margin:0 5px 0 15px;
+            width: 30px;
+            height: 20px;
+            background:#f15369;
+            border-radius: 5px;
+          }
+          view:nth-child(2){
+            icon{
+              background:#f9cdad;
+            }
+          }
+          view:nth-child(3){
+            icon{
+              background:#4fbdaa;
+            }
+          }
+        }
+        .detail{
+          display: flex;
+          margin-bottom:20px;
+          .can_title{
+            flex:1;
+            text-align: center;
+            line-height: 30px;
+          }
+          .can_data{
+            flex:4;
+            border-left: solid 1px #ddd;
+            view{
+              margin:5px 0;
+              height: 30px;
+              line-height: 30px;
+              text{
+                display: block;
+                border-radius:0 5px 5px 0;
+                background:#f15369;
+                text-align: right;
+                color:#fff;
+                padding-right: 5px;
+              }
+              // "#f15369""#4fbdaa""#5169ca",
+              &:nth-child(2){
+                text{
+                  background:#f9cdad;
+                }
+              }
+              &:nth-child(3){
+                text{
+                  background:#4fbdaa;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

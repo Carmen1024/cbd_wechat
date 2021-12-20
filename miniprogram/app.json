@@ -5,10 +5,11 @@
     "pages/logs/logs",
     "pages/store/list/list",
     "pages/store/info/info",
+    "pages/material/list/list",
+    "pages/material/info/info",
     "pages/region/info/info",
     "pages/region/list/list",
     "custom-tab-bar/index",
-    "pages/user/user",
     "pages/login/login"
   ],
   "window": {
@@ -47,19 +48,19 @@
         "pagePath": "pages/index/index",
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index_active.png",
-        "text": "组件"
+        "text": "首页"
       },
       {
         "pagePath": "pages/store/list/list",
         "iconPath": "images/store.png",
         "selectedIconPath": "images/store_active.png",
-        "text": "接口"
+        "text": "门店"
       },
       {
-        "pagePath": "pages/user/user",
-        "iconPath": "images/user.png",
-        "selectedIconPath": "images/user_active.png",
-        "text": "测试"
+        "pagePath": "pages/material/list/list",
+        "iconPath": "images/material.png",
+        "selectedIconPath": "images/material_active.png",
+        "text": "物料"
       }
     ]
   }

@@ -2,7 +2,7 @@ Component({
   data: {
     show:false,
     selected: 0,
-    color: "#7A7E83",
+    color: "#999999",
     selectedColor: "#152a7d",
     backgroundColor:'#fafafa',
     list: [{
@@ -16,10 +16,10 @@ Component({
       selectedIconPath: "/images/store_active.png",
       text: "门店"
     }, {
-      pagePath: "/pages/user/user",
-      iconPath: "/images/user.png",
-      selectedIconPath: "/images/user_active.png",
-      text: "我的"
+      pagePath: "/pages/material/list/list",
+      iconPath: "/images/material.png",
+      selectedIconPath: "/images/material_active.png",
+      text: "物料"
     }]
   },
   attached() {
