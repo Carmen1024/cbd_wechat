@@ -5,16 +5,22 @@
     <text>督导小程序</text>
     <text>日常信息监测</text>
   </view>
-  <view class="tips" wx:if="{{loading}}">
-    <view>您的帐号正在审核，请等待！</view>
+  <view class="tips" wx:if="{{flag==0}}">
+    <!-- <view>督导您好，正在进入首页！</view> -->
   </view>
-  <view class="auth" wx:else>
-    <button 
-    type="primary" 
-    open-type="getPhoneNumber" 
-    bindgetphonenumber="getPhoneNumber">
+  <view class="auth" wx:elif="{{flag==1}}">
+    <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
       授权微信手机号
     </button>
-    <button disabled="true" plain="true">手机号登录</button>
+    <view class="mobileLogin" wx:if="{{mobileLogin}}">
+      <view>使用手机号登录</view>
+      <input type="number" model:value="{{phone}}" maxlength="13" placeholder="请输入手机号" />
+      <button bindtap="nativeLogin">登录</button>
+    </view>
+    <button bindtap="mobile" wx:else="">手机号登录</button>
+    <!-- <button disabled="true" plain="true">手机号登录</button> -->
+  </view>
+  <view class="tips" wx:elif="{{flag==2}}">
+    <view>您的帐号正在后台审核，请等待！</view>
   </view>
 </view>

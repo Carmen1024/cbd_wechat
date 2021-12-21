@@ -10,24 +10,21 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    active:false
   },
   // 事件处理函数
-  onLoad(options) {
+  onLoad() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
     // @ts-ignore
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
     }
-    //判断账号是否已经激活
-    // const active = wx.getStorageSync('active') || false;
-    // console.log(options);
-    // if(!active){
-    //   wx.redirectTo({
-    //     url: '../login/login',
-    //   })
-    // }
   },
   onShow(){
     if (typeof this.getTabBar === 'function' &&

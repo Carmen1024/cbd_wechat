@@ -1,29 +1,100 @@
 // pages/login/login.ts
+import { getToken,setToken } from '../../utils/auth';
+import { login,loginByPhone,loginByWxPhone } from '../../api/user'
+import { getContent, getDataParams } from '../../utils/dataParams';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    loading:true
+    flag:0,//0未知身份 1已登录未获取手机号 2 已获取手机号但是不是督导身份
+    phone:"13799999999",
+    mobileLogin:false,
+    access_token:""
   },
-  getPhoneNumber (e) {
-    console.log(e.detail.code);
-    wx.setStorageSync("active",true);
-    wx.switchTab({
-      url: '../index/index',
+  mobile(){
+    this.setData({
+      mobileLogin:true
     })
-    //接口还没有，先这样把
-    //登录完自动回到首页
+  },
+  // 授权微信手机号登录
+  getPhoneNumber (e) {
+    console.log("手机code：",e.detail.code);
+    const params = getDataParams({"#eq":["access_token"]},{access_token:this.data.access_token});
+    loginByWxPhone(params).then(response=>{
+      const data = getContent(response)
+      console.log(data);
+      // wx.switchTab({
+      //   url: '../index/index',
+      // })
+    })
+  },
+  // 自主填写手机号登录
+  nativeLogin(){
+    console.log("手机号登录",this.data.phone);
+    const params = getDataParams(
+      {"#eq":["access_token","phone_num"]},
+      {access_token: this.data.access_token,phone_num:this.data.phone}
+    );
+    loginByPhone(params).then(response=>{
+      const data = getContent(response)
+      this.setData({
+        flag:data.access_flag
+      });
+      if(data.token){
+        setToken(data.token);
+        //督导
+        wx.switchTab({
+          url: '../index/index',
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
     //发送请求确认用户状态
-    // this.setData({
-    //   loading:false
+    // test
+    // wx.switchTab({
+    //   url: '../index/index',
     // })
+    //1.有token，是督导身份，直接进入首页
+    if(getToken()){
+      wx.switchTab({
+        url: '../index/index',
+      })
+    }
+    // 登录
+    wx.login({
+      success: res => {
+        console.log("登录了微信：",res.code)
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // code2Session
+        if (res.code) {
+          const params = getDataParams({"#eq":["js_code"]},{js_code: res.code});
+          // 发起网络请求
+          login(params).then(response=>{
+            const data = getContent(response)
+            this.setData({
+              access_token:data.access_token,
+              flag:data.access_flag
+            });
+            if(data.token){
+              setToken(data.token);
+              //督导
+              wx.switchTab({
+                url: '../index/index',
+              })
+            }
+          })
+        } else {
+          console.log('微信登录失败！' + res.errMsg)
+        }
+      },
+    })
   },
 
   /**
