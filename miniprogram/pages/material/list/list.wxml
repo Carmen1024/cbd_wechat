@@ -4,10 +4,10 @@
 <view class="container">
   <view class="selectMod" style="padding-top: {{statusBarHeight}}px;">
     <van-search 
-      value="{{ selectName }}" 
+      model:value="{{ m_name }}" 
       placeholder="输入物料名称" 
       bind:change="onChange"
-      bind:search="onSearch"
+      bind:search="materialSelect"
     />
   </view>
   <view class="materialList" style="padding-top: {{statusBarHeight+50}}px;">
@@ -20,5 +20,8 @@
         </view>
       </view>
     </view>
+  </view>
+  <view class="foot" wx:if="{{showFoot}}">
+    <text>到顶喽</text>
   </view>
 </view>

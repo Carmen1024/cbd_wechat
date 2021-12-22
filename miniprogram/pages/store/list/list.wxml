@@ -5,7 +5,7 @@
 <view class="container">
   <view class="selectMod" style="padding-top: {{statusBarHeight}}px;">
     <van-search 
-      value="{{ selectName }}" 
+      value="{{ s_name }}" 
       placeholder="输入门店名称" 
       bind:change="onChange"
       bind:search="onSearch"
@@ -16,10 +16,13 @@
       <view class="default">
         <image src="./../../../images/logo.jpg"></image>
         <view>
-          <text class="storeName">{{item.name}}</text>
-          <text class="storeAddr">{{item.addr}}</text>
+          <text class="storeName">{{item.s_name_k}}</text>
+          <text class="storeAddr">{{item.s_province}}{{item.s_city}}{{item.s_district}}{{item.s_addr}}</text>
         </view>
       </view>
     </view>
+  </view>
+  <view class="foot" wx:if="{{showFoot}}">
+    <text>到顶喽</text>
   </view>
 </view>

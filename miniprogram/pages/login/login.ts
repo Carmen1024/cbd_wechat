@@ -66,6 +66,7 @@ Page({
       wx.switchTab({
         url: '../index/index',
       })
+      return
     }
     // 登录
     wx.login({

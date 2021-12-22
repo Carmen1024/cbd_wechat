@@ -1,73 +1,17 @@
-// pages/store/list/list.ts
+import { storeQuery } from '../../../api/store'
+import { getContent, getDataParams,getPageParams,getPageTotal } from '../../../utils/dataParams'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    selectName:"",
-    storeList:[
-      {
-        "value": 427,
-        "store_id": "3611",
-        "name": "茶百道上海长岛路店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 403,
-        "store_id": "681",
-        "name": "茶百道上海大木桥路店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 399,
-        "store_id": "441",
-        "name": "茶百道北京魏公村店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 368,
-        "store_id": "390",
-        "name": "茶百道上海中原欧尚店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 359,
-        "store_id": "3118",
-        "name": "茶百道哈尔滨乐松广场店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 356,
-        "store_id": "561",
-        "name": "茶百道上海绿地缤纷城店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 352,
-        "store_id": "504",
-        "name": "茶百道上海惠南二店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 342,
-        "store_id": "385",
-        "name": "茶百道曹杨路地铁站店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 336,
-        "store_id": "307",
-        "name": "茶百道上海福州路店",
-        "addr": "茶百道上海长岛路店地址"
-      },
-      {
-        "value": 328,
-        "store_id": "592",
-        "name": "茶百道广州GOGO新天地店",
-        "addr": "茶百道上海长岛路店地址"
-      }
-    ],
+    s_name:"",
+    storeList:[],
+    pageIndex:0,
+    total:0,
+    showFoot:false,
     statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
     menuWidth:wx.getMenuButtonBoundingClientRect()['width']
   },
@@ -75,28 +19,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-
+    this.storeSelect();
+  },
+  storeSelect(){
+    const refresh = this.data.s_name ? true:false;
+    let pageIndex = this.data.pageIndex;
+    const pageSize=10;
+    const parmas = getPageParams({["#like"]:["s_name"]},{"s_name":this.data.s_name},pageSize,pageIndex,refresh)
+    storeQuery(parmas).then(response=>{
+      const newList:never[] = getContent(response);
+      this.setData({
+        storeList:[...this.data.storeList,...newList],
+        total:getPageTotal(response),
+        pageIndex:++pageIndex,
+        showFoot : newList.length < pageSize ? true:false
+      })
+    })
   },
   onChange(e) {
     this.setData({
-      selectName: e.detail,
+      s_name: e.detail,
     });
   },
   onSearch(){
-    console.log('搜索' , this.data.selectName);
+    console.log('搜索' , this.data.s_name);
+    this.setData({pageIndex:0,storeList:[]});
+    this.storeSelect();
   },
   toInfo(e){
     const item = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: `../info/info?id=${item.store_id}&name=${item.name}`,
+      url: `../info/info?id=${item._id}&name=${item.s_name_k}`,
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
   },
 
   /**
@@ -113,31 +67,16 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
-
+    if(this.data.storeList.length<this.data.total){
+      this.storeSelect();
+    }else{
+      this.setData({
+        showFoot : true
+      })
+    }
   },
 
   /**
