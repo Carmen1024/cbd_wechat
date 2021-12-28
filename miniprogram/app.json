@@ -8,6 +8,7 @@
     "pages/store/info/info",
     "pages/material/list/list",
     "pages/material/info/info",
+    "pages/material/all_info/info",
     "pages/region/info/info",
     "pages/region/list/list",
     "custom-tab-bar/index"
@@ -21,6 +22,8 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "regionInfo": "/pages/region/info/info",
+    "foot":"/components/foot/foot",
+    "timeUtil":"/components/time/time",
     "van-button": "@vant/weapp/button/index",
     "van-search": "@vant/weapp/search/index",
     "van-progress": "@vant/weapp/progress/index",

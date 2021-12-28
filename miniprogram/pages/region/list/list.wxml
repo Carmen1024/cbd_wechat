@@ -5,13 +5,13 @@
 <view class="container">
   <view class="selectMod">
     <view class="dateItem">
-      <view class="dateType">
-        <van-dropdown-menu active-color="#152a7d">
+      <!-- <view class="dateType">
+        <van-dropdown-menu active-color="#005bac">
           <van-dropdown-item model:value="{{ type }}" options="{{ typeOption }}" />
         </van-dropdown-menu>
-      </view>
+      </view> -->
       <view class="dateType">
-        <van-dropdown-menu active-color="#152a7d">
+        <van-dropdown-menu active-color="#005bac">
           <van-dropdown-item model:value="{{ dateType }}" options="{{ dateTypeOption }}" />
         </van-dropdown-menu>
       </view>
@@ -25,12 +25,12 @@
             bind:confirm="onConfirm" 
             min-date="{{minDate}}"
             max-date="{{maxDate}}"
-            color="#152a7d"
+            color="#005bac"
           />
-        <van-dropdown-menu wx:if="{{ dateType==1 }}" active-color="#152a7d">
+        <van-dropdown-menu wx:if="{{ dateType==1 }}" active-color="#005bac">
           <van-dropdown-item value="{{ weekDate }}" options="{{ weekOption }}" />
         </van-dropdown-menu>
-        <van-dropdown-menu wx:if="{{ dateType==2 }}" active-color="#152a7d">
+        <van-dropdown-menu wx:if="{{ dateType==2 }}" active-color="#005bac">
           <van-dropdown-item value="{{ monthDate }}" options="{{ monthOption }}" />
         </van-dropdown-menu>
       </view>
@@ -39,22 +39,22 @@
   <view class="storeList">
     <view class="storeItem" wx:for="{{ storeList }}" bindtap="toInfo" data-item="{{item}}" data-index="{{index}}">
       <view class="default">
-        <image src="./../../../images/logo.jpg"></image>
+        <image src="./../../../images/logo_new.jpg"></image>
         <view>
           <text class="storeName">{{item.name}}</text>
           <text class="storeAddr">{{item.addr}}</text>
         </view>
       </view>
       <view class="info">
-        <view class="{{(type==0 || type==1)?'printList':'hideItem'}}">
+        <!-- <view class="printList">
           <view class="title"><text>打印</text><text>10000</text></view>
           <view class="item">
             <text>报损：1000</text>
             <text>用完：9000</text>
           </view>
-        </view>
-        <view class="{{(type==0 || type==2)?'materielList':'hideItem'}}">
-          <view class="title"><text>物料</text><text>9000</text></view>
+        </view> -->
+        <view class="materielList">
+          <view class="title"><text>打印总数</text><text>9000</text></view>
           <view class="item">
             <text>报损：500</text>
             <text>用完：6000</text>

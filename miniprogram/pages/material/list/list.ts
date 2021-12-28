@@ -24,7 +24,6 @@ Page({
         materialList:getContent(response),
         showFoot:true
       })
-      console.log(this.data.materialList);
     })
   },
   /**

@@ -1,14 +1,20 @@
 /* pages/login/login.wxss */
 .login-container{
+  height: 100vh;
+  display: flex;
+  align-items:center;
+  flex-wrap: wrap;
+  align-content: center;
   padding:10px;
   .title{
-    margin-top: 20%;
+    translate:.5s;
+    width: 100%;
     text-align: center;    
     image{
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      margin-bottom: 20px;
+      margin-bottom: 20px auto;
     }
     text{
       display: block;
@@ -24,16 +30,17 @@
     text-align: center;
     margin-top: 50px;
     font-size: 20px;
-    color:#152a7d;
+    color:#005bac;
   }
   .auth{
+    width: 100%;
     position: relative;
     margin-top: 10px;
     animation: move2 1s;
     button{
       margin:20px;
       &:first-child{
-        background-color:#152a7d;
+        background-color:#005bac;
         height: 50px;
       }
     }

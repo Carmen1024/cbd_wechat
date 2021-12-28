@@ -1,2 +1,40 @@
-<!--components/time/time.wxml-->
-<text>components/time/time.wxml</text>
+<!-- 时间控制模板 -->
+<view class="container">
+  <image src="./../../images/time_icon2.png"></image>
+  <view class="dateItem">
+    <view class="dateType">
+      <van-dropdown-menu active-color="#005bac">
+        <van-dropdown-item 
+        bind:change="reset" 
+        model:value="{{ dateType }}" 
+        options="{{ dateTypeOption }}" />
+      </van-dropdown-menu>
+    </view>
+    <view class="dateValue">
+      <view wx:if="{{ dateType==0 }}" bindtap="chooseDate" class="dayDate">
+        <text>{{ dayDate }}</text>
+      </view>
+      <van-calendar 
+          show="{{ dateShow }}" 
+          bind:close="onClose" 
+          bind:confirm="onConfirm" 
+          min-date="{{minDate}}"
+          max-date="{{maxDate}}"
+          color="#005bac"
+        />
+      <van-dropdown-menu wx:if="{{ dateType==1 }}" active-color="#005bac">
+        <van-dropdown-item
+          bind:change="reset" 
+          model:value="{{ weekDate }}"
+          options="{{ weekOption }}" />
+      </van-dropdown-menu>
+      <van-dropdown-menu wx:if="{{ dateType==2 }}" active-color="#005bac">
+        <van-dropdown-item 
+          bind:change="reset" 
+          model:value="{{ monthDate }}" 
+          options="{{ monthOption }}" />
+      </van-dropdown-menu>
+    </view>
+  </view>
+</view>
+

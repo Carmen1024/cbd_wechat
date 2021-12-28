@@ -1,10 +1,13 @@
 <!--pages/login/login.wxml-->
 <view class="login-container">
-  <view class="title">
-    <image src="./../../images/logo.jpg"></image>
+  <view class="title" wx:if="{{!loading}}">
+    <image src="./../../images/logo_new.jpg"></image>
     <text>督导小程序</text>
     <text>日常信息监测</text>
   </view>
+  <!-- <view class="title" wx:else="">
+    <image src="./../../images/logo_new.jpg"></image>
+  </view> -->
   <view class="tips" wx:if="{{flag==0}}">
     <!-- <view>督导您好，正在进入首页！</view> -->
   </view>

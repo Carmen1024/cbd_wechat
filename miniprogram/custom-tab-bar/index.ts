@@ -3,7 +3,7 @@ Component({
     show:false,
     selected: 0,
     color: "#999999",
-    selectedColor: "#152a7d",
+    selectedColor: "#005bac",
     backgroundColor:'#fafafa',
     list: [{
       pagePath: "/pages/index/index",

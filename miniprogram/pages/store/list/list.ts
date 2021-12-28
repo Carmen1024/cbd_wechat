@@ -49,7 +49,7 @@ Page({
   toInfo(e){
     const item = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: `../info/info?id=${item._id}&name=${item.s_name_k}`,
+      url: `../info/info?id=${item._id}&name=${item.s_name}`,
     })
   },
 

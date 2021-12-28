@@ -2,17 +2,13 @@
   index.wxml
   1.授权登录，激活（微信授权），发送个人信息给后台
   如果后台督导信息不存在，则弹框提示账号未激活；
-
   如果后台督导已激活，则自动展示信息：
-  督导所有门店展示：（按日，周，月切换）（数据可能有延迟）
-  1.打印：今日打印总数，今日报损总数，今日已用完总数。
-  2.物料：今日物料总数，今日物料报损总数，今天已用完物料总数
 -->
 <view class="container">
 
   <view class="indexMsg">
     <view class="title">
-      <image src="./../../images/logo.jpg"></image>
+      <image src="./../../images/logo_new.jpg"></image>
       <text>日常信息监测</text>
     </view>
     <view class="tips">

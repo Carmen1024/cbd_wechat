@@ -34,9 +34,16 @@ export function getContent(data){
     return data["#content"];
 }
 
+export function getExtData(data){
+    return JSON.parse( data["#ext"] );
+}
+
 export function getPageTotal(data){
     const ext = JSON.parse( data["#ext"] );
     return ext.total;
+}
+export function getCount(data){
+    return data["#count"];
 }
 
 export function isEmpty(str){

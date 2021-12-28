@@ -1,7 +1,7 @@
 // pages/store/list/list.ts
 
 import { formatDate } from '../../../utils/util'
-import { materialQueryDetail } from '../../../api/material'
+import { storeQueryList } from '../../../api/store'
 import { getContent, getDataParams,getPageParams,getPageTotal,getExtData } from '../../../utils/dataParams'
 Page({
 
@@ -9,8 +9,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    m_Id:'',
-    m_name:'',
     storeList:[],
     pageIndex:0,
     total:0,
@@ -23,12 +21,8 @@ Page({
    */
   onLoad(options) {
     console.log(options);
-    this.setData({
-      m_Id : options.id || '',
-      m_name : options.name || '所有物料'
-    })
     wx.setNavigationBarTitle({
-      title: this.data.m_name+'使用情况'
+      title: '所有物料使用情况'
     })
     this.storeSelect();
   },
@@ -37,14 +31,12 @@ Page({
     let pageIndex = this.data.pageIndex;
     const pageSize=10;
     let timeData = {
-      m_id:this.data.m_Id,
       createTime:this.data.createTime,
       endTime:this.data.endTime,
     }
     let parmas = getPageParams(
-      {"#eq":["m_id"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
-      timeData,pageSize,pageIndex,false);
-    materialQueryDetail(parmas).then(response=>{
+      {"#gte":["pt_h_time"],"#lte":["pt_h_time"]},timeData,pageSize,pageIndex,false);
+    storeQueryList(parmas).then(response=>{
       if(this.data.pageIndex==0){
         ////print_count-打印总数量  finish_count-用完总数量 break_count-报损总数量
         const { print_count=0,finish_count=0,break_count=0} = getExtData(response);
@@ -61,6 +53,20 @@ Page({
         showFoot : newList.length < pageSize ? true:false
       })
     })
+  },
+  chooseDate(){
+    this.setData({
+      dateShow:true,
+    })
+  },
+  onClose() {
+    this.setData({ dateShow: false });
+  },
+  onConfirm(event) {
+    this.setData({
+      dateShow: false,
+      dayDate: formatDate(new Date(event.detail),"YYYY-MM-DD"),
+    });
   },
   toInfo(e){
     const item = e.currentTarget.dataset.item;

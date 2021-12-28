@@ -1,5 +1,6 @@
   .container{
     font-size: 14px;
+    // background-color: red;
     .storeList{
       overflow: hidden;
       margin-top: 60px;
@@ -19,7 +20,7 @@
             border-radius: 50%;
           }
           view{
-            margin-left: 10px;
+            margin-left: 5px;
             text{
               display: block;
               height: 30px;
@@ -27,7 +28,7 @@
             }
             .storeName{
               font-weight:bold;
-              font-size: 18px;
+              font-size: 16px;
             }
           }
           .icon{
@@ -69,7 +70,9 @@
           }
           .item{
             // "#f15369""#4fbdaa""#5169ca",
+            display: flex;
             text{
+              flex:1;
               margin:5px 0;
               padding-left:3px;
               height: 20px;

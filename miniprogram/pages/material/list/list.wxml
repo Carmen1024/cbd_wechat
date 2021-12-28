@@ -13,7 +13,7 @@
   <view class="materialList" style="padding-top: {{statusBarHeight+50}}px;">
     <view class="materialItem" wx:for="{{ materialList }}" bindtap="toInfo" data-item="{{item}}">
       <view class="default">
-        <image src="./../../../images/logo.jpg"></image>
+        <image src="./../../../images/logo_new.jpg"></image>
         <view>
           <text class="materialName">{{item.m_name}}</text>
           <text class="materialAddr">{{item.clf_name}}</text>
@@ -21,7 +21,5 @@
       </view>
     </view>
   </view>
-  <view class="foot" wx:if="{{showFoot}}">
-    <text>到顶喽</text>
-  </view>
+  <foot wx:if="{{showFoot}}"></foot>
 </view>

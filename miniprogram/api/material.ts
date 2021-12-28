@@ -7,3 +7,11 @@ export const materialQuery = (data:object) => {
     data
   })
 }
+
+export const materialQueryDetail = (data:object) => {
+  return request({
+    url: '/superv_statistics/query_material_detail',
+    method: 'post',
+    data
+  })
+}

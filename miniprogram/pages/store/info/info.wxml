@@ -1,84 +1,48 @@
 <!--
   pages/store/info/info.wxml
   选择单一门店展示：（按日，周，月切换）
-1.打印：今日打印总数，今日报损总数，今日已用完总数。
-2.物料：今日物料总数，今日物料总数，今天已用完物料总数
+1.打印：今日打印总数，今日报损总数，今日用完总数。
+2.物料：今日物料总数，今日物料总数，今天用完物料总数
   -->
 <view class="container">
-  <view class="dateMod">
-    <view class="dateType">
-      <van-dropdown-menu>
-        <van-dropdown-item model:value="{{ dateType }}" options="{{ dateTypeOption }}" />
-      </van-dropdown-menu>
-    </view>
-    <view class="dateValue">
-      <view wx:if="{{ dateType==0 }}" bindtap="chooseDate" class="dayDate">
-        <text>{{ dayDate }}</text>
-      </view>
-      <van-dropdown-menu wx:if="{{ dateType==1 }}">
-        <van-dropdown-item value="{{ weekDate }}" options="{{ weekOption }}" />
-      </van-dropdown-menu>
-      <van-dropdown-menu wx:if="{{ dateType==2 }}">
-        <van-dropdown-item value="{{ monthDate }}" options="{{ monthOption }}" />
-      </van-dropdown-menu>
-    </view>
-  <van-popup
-    show="{{ dateShow }}"
-    position="bottom"
-    custom-style="height: 40%;"
-    bind:close="onCloseDate"
-  >
-    <van-datetime-picker
-      type="date"
-      value="{{ currentDate }}"
-      bind:confirm="resetDate"
-      bind:cancel="onCloseDate"
-      max-date="{{ maxDate }}"
-      formatter="{{ formatter }}"
-    />
-  </van-popup>
-  </view>
+  <timeUtil bind:reSetTime="reSelect" />
   <view class="info">
-    <view class="printList">
-      <text class="title">打印情况</text>
+    <view class="totalList">
+      <text class="title">物料使用汇总</text>
       <view class="item">
-        <view wx:for="{{printList}}">
-          <text>{{item.label}}</text>
-          <text class="count">{{item.value}}</text>
-          <van-progress percentage="{{item.percent}}" stroke-width="10" color="#5e7cf8" />
+        <view class="totalMain">
+          <text>打印总数</text><text class="count">{{totalList.print_count}}</text>
+        </view>
+        <view>
+          <text>报损总数</text><text class="count">{{totalList.break_count}}</text>
+          <van-progress percentage="{{totalList.break_percent}}" stroke-width="12" color="#f9cdad" />
+        </view>
+        <view>
+          <text>用完总数</text><text class="count">{{totalList.finish_count}}</text>
+          <van-progress percentage="{{totalList.finish_percent}}" stroke-width="12" color="#4fbdaa" />
         </view>
       </view>
     </view>
     <view class="materielList">
-      <text class="title">物料情况</text>
-      <!-- <view class="item">
-        <view wx:for="{{detailList}}" class="detail">
-          <text>{{item.m_name}}{{item.clf_name?'('+item.clf_name+')':''}}</text>
-          <view>
-            <text>总数：{{item.value1}}</text>
-            <text>报损：{{item.value2}}</text>
-            <text>已用完：{{item.value3}}</text>
-          </view>
-        </view>
-      </view> -->
+      <text class="title">物料详细信息</text>
       <view class="can_item">
         <view class="tip">
-          <view><icon></icon>总数</view>
+          <view><icon></icon>打印总数</view>
           <view><icon></icon>报损</view>
-          <view><icon></icon>已用完</view>
+          <view><icon></icon>用完</view>
         </view>
-        <view wx:for="{{detailList}}" class="detail">
+        <view wx:for="{{materialList}}" class="detail">
           <view class="can_title">
-            <view>{{item.m_name}}</view>
-            <view>{{item.clf_name?'('+item.clf_name+')':''}}</view>
+            <text>{{item.m_name}}</text>
+            <text>{{item.print_count || 0}}</text>
           </view>
           <view class="can_data">
-            <view><text style="width:{{item.percent1+'%'}}">{{item.value1}}</text></view>
-            <view><text style="width:{{item.percent2+'%'}}">{{item.value2}}</text></view>
-            <view><text style="width:{{item.percent3+'%;'}}">{{item.value3}}</text></view>
+            <text style="width:{{(item.break_percent)+'%'}}">{{item.break_count || 0}}</text>
+            <text style="width:{{(item.finish_percent)+'%'}}">{{item.finish_count || 0}}</text>
           </view>
         </view>
       </view>
     </view>
   </view>
+  <foot wx:if="{{showFoot}}"></foot>
 </view>

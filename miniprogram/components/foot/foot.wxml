@@ -1,0 +1,4 @@
+<!--components/foot/foot.wxml-->
+<view class="foot">
+  <text>到顶喽</text>
+</view>

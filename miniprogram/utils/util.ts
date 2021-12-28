@@ -83,3 +83,71 @@ export const formatDate = (time, format = 'YYYY-MM-DD hh:mm:ss') => {
       return `${arg.year}-${arg.month}-${arg.day} ${arg.hours}:${arg.minutes}:${arg.seconds}`
   }
 }
+// 获取本周时间
+export const weekDate = () =>{
+  const time = new Date().getTime();
+  return getWeekDate(time);
+}
+
+// 获取上周时间
+export const lastWeekDate =()=>{
+  const time = new Date().getTime()-1000*60*60*24*7;
+  return getWeekDate(time);
+}
+//按照时间戳获取周一和周日时间
+export const getWeekDate=(time:number)=>{
+  //选中的时间戳
+  const timestamp = time;
+  const serverDate = new Date(time);
+
+  //本周周日的的时间
+  const sundayTiem = timestamp + ((7 - serverDate.getDay()) * 24 * 60 * 60 * 1000)
+  const SundayData = new Date(sundayTiem);
+  //年
+  const endY = SundayData.getFullYear();
+  //月
+  const endM = (SundayData.getMonth() + 1 < 10 ? '0' + (SundayData.getMonth() + 1) : SundayData.getMonth() + 1);
+  //日
+  const endD = SundayData.getDate() < 10 ? '0' + SundayData.getDate() : SundayData.getDate();
+    console.log('周日：  ' + endY + '-' + endM + '-' + endD);
+
+  // 本周周一的时间
+  const startTime = timestamp - ((serverDate.getDay() - 1) * 24 * 60 * 60 * 1000)
+  const startData = new Date(startTime);
+  //年
+  const startY = startData.getFullYear();
+  //月
+  const startM = (startData.getMonth() + 1 < 10 ? '0' + (startData.getMonth() + 1) : startData.getMonth() + 1);
+  //日
+  const startD = startData.getDate() < 10 ? '0' + startData.getDate() : startData.getDate();
+  //输出值
+  const config = {
+      createTime: startY + '-' + startM + '-' + startD + ' 00:00:00',
+      endTime: endY + '-' + endM + '-' + endD + ' 23:59:59'
+  }
+  return config;
+}
+
+// 获取本月时间
+export const monthDate =()=>{
+  const time = new Date().getTime();
+  return getMonthDate(time);
+}
+
+// 获取上月时间
+export const lastMonthDate =()=>{
+  const time = new Date().getTime()-1000*60*60*24*30;
+  return getMonthDate(time);
+}
+
+//按照时间戳获取月初和月末时间
+export const getMonthDate=(time:number)=>{
+  const nowDate = new Date(time);
+  const fullYear = nowDate.getFullYear();
+  const month = nowDate.getMonth() + 1; // getMonth 方法返回 0-11，代表1-12月
+  const endOfMonth = new Date(fullYear, month, 0).getDate(); // 获取本月最后一天
+  const createTime = formatDate(nowDate.setDate(1),"YYYY-MM-DD")+" 00:00:00";//当月第一天
+  const endTime = formatDate(nowDate.setDate(endOfMonth),"YYYY-MM-DD")+" 23:59:59";//当月最后一天
+  return { createTime,endTime };
+}
+

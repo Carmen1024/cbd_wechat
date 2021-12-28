@@ -14,15 +14,13 @@
   <view class="storeList" style="padding-top: {{statusBarHeight+50}}px;">
     <view class="storeItem" wx:for="{{ storeList }}" bindtap="toInfo" data-item="{{item}}">
       <view class="default">
-        <image src="./../../../images/logo.jpg"></image>
+        <image src="./../../../images/logo_new.jpg"></image>
         <view>
-          <text class="storeName">{{item.s_name_k}}</text>
+          <text class="storeName">{{item.s_name}}</text>
           <text class="storeAddr">{{item.s_province}}{{item.s_city}}{{item.s_district}}{{item.s_addr}}</text>
         </view>
       </view>
     </view>
   </view>
-  <view class="foot" wx:if="{{showFoot}}">
-    <text>到顶喽</text>
-  </view>
+  <foot wx:if="{{showFoot}}"></foot>
 </view>

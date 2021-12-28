@@ -7,8 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //0:全部 1:打印 2.物料
-    type:"0",
     typeOption:[
       { text: '全部', value: "0" },
       { text: '打印', value: "1" },
@@ -108,10 +106,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    this.setData({
-      type:options.type || "0"
-    })
+  onLoad() {
+    
   },
   chooseDate(){
     this.setData({

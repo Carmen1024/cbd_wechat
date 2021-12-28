@@ -4,58 +4,29 @@
     <view class="msgItem" bindtap="toStoreList">
       <image src="./../../../images/store_bg.png"></image>
       <view>管理门店</view>
-      <text>{{userInfo.u_store}}</text>
+      <text>{{storeCount}}</text>
     </view>
     <view class="msgItem" bindtap="toMaterialList">
       <image src="./../../../images/material_bg.png"></image>
       <view>物料种类</view>
-      <text>{{userInfo.materialCount}}</text>
-    </view>
-  </view>
-  <!-- <view class="userInfo">
-    <view class="userItem" bindtap="mapContext">
-      <image src="./../../../images/region_bg.png"></image>
-      <view>{{userInfo.u_region}}</view>
-    </view>
-    <view class="userItem" bindtap="toList" data-type="0">
-      <image src="./../../../images/index_active.png"></image>
-      <view>汇总详情</view>
-    </view>
-  </view> -->
-  <view class="regionInfo">
-    <view class="regionTitle" bindtap="toList" data-type="0">
-      <image src="./../../../images/print.png"></image>
-      <text>打印详情</text>
-    </view>
-    <view class="printList" data-type="1" bindtap="toList">
-      <view class="title">
-        <text>今日实时总数</text>
-        <text>10000</text>
-      </view>
-      <view class="item">
-        <!-- 1.打印：今日打印总数，今日报损总数，今日已用完总数。 -->
-        <!-- 2.物料：今日物料总数，今日物料总数，今天已用完物料总数 -->
-        <text>报损</text><text>1000</text>
-        <text>用完</text><text>5000</text>
-      </view>
-      <image src="./../../../images/icon_right.png"></image>
+      <text>{{materialCount}}</text>
     </view>
   </view>
   <view class="regionInfo">
     <view class="regionTitle" bindtap="toList" data-type="0">
       <image src="./../../../images/title2.png"></image>
-      <text>物料详情</text>
+      <text>物料当日实时情况</text>
     </view>
     <view class="materielList" data-type="2" bindtap="toList">
       <view class="title">
-        <text>今日实时总数</text>
-        <text>10000</text>
+        <text>打印总数</text>
+        <text>{{totalList.print_count}}</text>
       </view>
       <view class="item">
         <text>报损</text>
-        <text>500</text>
+        <text>{{totalList.break_count}}</text>
         <text>用完</text>
-        <text>6000</text>
+        <text>{{totalList.finish_count}}</text>
       </view>
       <image src="./../../../images/icon_right.png"></image>
     </view>
@@ -66,7 +37,7 @@
       <text>管理区域</text>
     </view>
     <view class="mapInfo" bindtap="mapContext">
-      <view>{{userInfo.u_region}}</view>
+      <view>{{u_region}}</view>
       <image src="./../../../images/icon_right.png"></image>
     </view>
     </view>

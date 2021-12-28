@@ -1,3 +1,9 @@
+import { getContent, getDataParams,getPageParams,getPageTotal,getCount,getExtData } from '../../../utils/dataParams'
+import { storeQuery,storeQueryList } from '../../../api/store'
+import { materialQuery } from '../../../api/material'
+import { formatDate } from '../../../utils/util'
+
+
 // pages/region/info/info.ts
 Component({
   /**
@@ -11,18 +17,57 @@ Component({
    * 组件的初始数据
    */
   data: {
-    userInfo:{
       u_name:'',
-      u_region:'四川省成都市天府新区',
-      u_store:16,
-      materialCount:79
+      u_region:'四川省成都市高新区',
+      storeCount:0,
+      materialCount:0,
+      // <!-- totalList print_count-打印总数量  finish_count-用完总数量 break_count-报损总数量 -->
+      totalList:{
+        print_count:0,
+        finish_count:0,
+        break_count:0
+      }
+  },
+  lifetimes: {
+    attached: function() {
+      // 在组件实例进入页面节点树时执行
+      const parmas = getPageParams({},{},1,0,false)
+      storeQuery(parmas).then(response=>{
+        this.setData({
+          storeCount:getPageTotal(response),
+        })
+      })
+      const dataParams = getDataParams({},{});
+      materialQuery(dataParams).then(response=>{
+        this.setData({
+          materialCount:getCount(response),
+        })
+      })
+      this.getList();
+    },
+    detached: function() {
+      // 在组件实例被从页面节点树移除时执行
     },
   },
-
   /**
    * 组件的方法列表
    */
   methods: {
+    getList(){
+      let timeData = {
+        createTime:formatDate(new Date(),"YYYY-MM-DD")+" 00:00:00",
+        endTime:formatDate(new Date(),"YYYY-MM-DD")+" 23:59:59",
+      }
+      let parmas = getPageParams(
+        {"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
+        timeData,1,0,false);
+        storeQueryList(parmas).then(response=>{
+          const { print_count=0,finish_count=0,break_count=0} = getExtData(response);
+          this.setData({
+            totalList:{print_count,finish_count,break_count}
+          })
+      })
+    },
     toStoreList(){
       wx.switchTab({
         url: '../store/list/list'
@@ -33,15 +78,13 @@ Component({
         url: '../material/list/list'
       })
     },
-    toList(e){
-      const type = e.currentTarget.dataset.type;
-      console.log(type);
+    toList(){
       wx.navigateTo({
-        url: '../region/list/list?type='+type
+        url: '../material/all_info/info'
       })
     },
     mapContext(){
-      const u_region = this.data.userInfo.u_region;
+      // const u_region = this.data.userInfo.u_region;
       wx.getLocation({
         type: 'gcj02', //返回可以用于wx.openLocation的经纬度
         success (res) {

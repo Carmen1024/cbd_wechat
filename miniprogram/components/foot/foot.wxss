@@ -1,0 +1,6 @@
+/* components/foot/foot.wxss */
+.foot{
+  margin:20px 0;
+  text-align: center;
+  color:#999;
+}

@@ -1,15 +1,14 @@
 <!--
-  物料-单项详情页
+  物料
 -->
 <view class="container">
   <timeUtil bind:reSetTime="reSelect" />
   <view class="storeList">
     <view class="storeItem" wx:for="{{ storeList }}" bindtap="toInfo" data-item="{{item}}" data-index="{{index}}">
-      <view class="default">
+      <view class="default ">
         <image hidden="{{item.s_name=='全部'}}" src="./../../../images/logo_new.jpg"></image>
         <view>
           <text class="storeName">{{item.s_name}}</text>
-          <!-- <text class="storeAddr">{{item.addr}}</text> -->
         </view>
         <image hidden="{{item.s_name=='全部'}}" class="icon" src="./../../../images/icon_right.png"></image>
       </view>
