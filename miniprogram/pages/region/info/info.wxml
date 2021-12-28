@@ -15,7 +15,7 @@
   <view class="regionInfo">
     <view class="regionTitle" bindtap="toList" data-type="0">
       <image src="./../../../images/title2.png"></image>
-      <text>物料当日实时情况</text>
+      <text>物料实时统计</text>
     </view>
     <view class="materielList" data-type="2" bindtap="toList">
       <view class="title">

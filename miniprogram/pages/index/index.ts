@@ -2,6 +2,9 @@
 // 获取应用实例
 const app = getApp<IAppOption>()
 
+import {loginout} from '../../api/user'
+import {removeToken} from '../../utils/auth'
+
 Page({
   data: {
     motto: 'Hello World',
@@ -13,12 +16,14 @@ Page({
   },
   // 事件处理函数
   onLoad() {
-    wx.showLoading({
-      title: '加载中',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 2000)
+    // wx.showToast({
+    //   title:'',
+    //   icon:'loading',
+    //   duration:10000
+    // })
+    // setTimeout(function () {
+    //   wx.hideLoading()
+    // }, 2000)
     // @ts-ignore
     if (wx.getUserProfile) {
       this.setData({
@@ -54,6 +59,31 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  logout(){
+    wx.showModal({
+      title: '是否确认退出',
+      content: '重新授权手机号之后，需再次激活',
+      confirmColor:'#005bac',
+      confirmText:'退出',
+      cancelText:'返回',
+      cancelColor:'#666666',
+      success (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          loginout().then(response=>{
+            //督导
+            // console.log(response);
+            removeToken();
+            wx.reLaunch({
+              url: '../login/login',
+            })
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   }
 })

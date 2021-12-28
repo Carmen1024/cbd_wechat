@@ -1,7 +1,7 @@
 <!--
   pages/store/info/info.wxml
   选择单一门店展示：（按日，周，月切换）
-1.打印：今日打印总数，今日报损总数，今日用完总数。
+1.打印：今日打印总数，今日报损数量，今日已用完数。
 2.物料：今日物料总数，今日物料总数，今天用完物料总数
   -->
 <view class="container">
@@ -14,11 +14,11 @@
           <text>打印总数</text><text class="count">{{totalList.print_count}}</text>
         </view>
         <view>
-          <text>报损总数</text><text class="count">{{totalList.break_count}}</text>
+          <text>报损数量</text><text class="count">{{totalList.break_count}}</text>
           <van-progress percentage="{{totalList.break_percent}}" stroke-width="12" color="#f9cdad" />
         </view>
         <view>
-          <text>用完总数</text><text class="count">{{totalList.finish_count}}</text>
+          <text>已用完数</text><text class="count">{{totalList.finish_count}}</text>
           <van-progress percentage="{{totalList.finish_percent}}" stroke-width="12" color="#4fbdaa" />
         </view>
       </view>

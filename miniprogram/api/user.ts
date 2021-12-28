@@ -7,6 +7,13 @@ export const login = (data:object) => {
     data
   })
 }
+// 退出登录，必须重新授权手机号
+export const loginout = () => {
+  return request({
+    url: '/login/logout_with_wechat',
+    method: 'post'
+  })
+}
 
 // 微信手机号授权登录
 export const loginByWxPhone = (data:object) => {

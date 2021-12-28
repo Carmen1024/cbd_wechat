@@ -27,10 +27,17 @@
     }
   }
   .tips{
+    width: 100%;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
     font-size: 20px;
     color:#005bac;
+    view{
+      margin-bottom: 20px;
+    }
+    button{
+      background-color:#005bac;
+    }
   }
   .auth{
     width: 100%;

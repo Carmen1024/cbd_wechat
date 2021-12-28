@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "督导小程序",
+  "navigationBarTitleText": "蜀信云茶",
   "pages": [
     "pages/login/login",
     "pages/index/index",
@@ -10,7 +10,6 @@
     "pages/material/info/info",
     "pages/material/all_info/info",
     "pages/region/info/info",
-    "pages/region/list/list",
     "custom-tab-bar/index"
   ],
   "window": {

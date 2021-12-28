@@ -11,7 +11,7 @@ Page({
   data: {
     flag:0,//0未知身份 1已登录未获取手机号 2 已获取手机号但是不是督导身份
     loading:true,
-    phone:"13799999999",
+    phone:"",
     mobileLogin:false,
     access_token:""
   },  /**
@@ -62,6 +62,11 @@ Page({
       mobileLogin:true
     })
   },
+  reset(){
+    this.setData({
+      flag:1
+    })
+  },
   // 授权微信手机号登录
   getPhoneNumber (e) {
     console.log("手机code：",e.detail.code);
@@ -87,6 +92,15 @@ Page({
   // 自主填写手机号登录
   nativeLogin(){
     console.log("手机号登录",this.data.phone);
+    const reg = this.data.phone.match(/^1[0-9]{10}/g);
+    console.log(reg);
+    if(!reg){
+      wx.showToast({
+        title:'手机号不正确',
+        icon:'error'
+      })
+      return;
+    }
     const params = getDataParams(
       {"#eq":["access_token","phone_num"]},
       {access_token: this.data.access_token,phone_num:this.data.phone}
@@ -105,53 +119,4 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    wx.hideHomeButton();
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

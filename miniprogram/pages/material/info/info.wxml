@@ -6,19 +6,20 @@
   <view class="storeList">
     <view class="storeItem" wx:for="{{ storeList }}" bindtap="toInfo" data-item="{{item}}" data-index="{{index}}">
       <view class="default">
-        <image hidden="{{item.s_name=='全部'}}" src="./../../../images/logo_new.jpg"></image>
+        <image hidden="{{item.all}}" src="./../../../images/logo_new.jpg"></image>
         <view>
           <text class="storeName">{{item.s_name}}</text>
           <!-- <text class="storeAddr">{{item.addr}}</text> -->
         </view>
-        <image hidden="{{item.s_name=='全部'}}" class="icon" src="./../../../images/icon_right.png"></image>
+        <image hidden="{{item.all}}" class="icon" src="./../../../images/icon_right.png"></image>
       </view>
       <view class="info">
         <view class="materielList">
-          <view class="title"><text>打印总数</text><text>{{item.print_count}}</text></view>
+          <!-- <view class="title"><text>打印总数</text><text>{{item.print_count}}</text></view> -->
           <view class="item">
-            <text>报损：{{item.break_count}}</text>
-            <text>用完：{{item.finish_count}}</text>
+            <text>打印总数：{{item.print_count}}</text>
+            <text>报损数量：{{item.break_count}}</text>
+            <text>已用完数：{{item.finish_count}}</text>
           </view>
         </view>
       </view>

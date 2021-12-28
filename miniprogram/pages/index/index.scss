@@ -4,21 +4,23 @@
     padding:10px;
     .title{
       display: flex;
-      line-height: 50px;
-      image{
-        width: 50px;
-        height: 50px;
+      line-height: 40px;
+      .logo{
+        float: left;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
       }
       text{
-        padding-left: 10px;
-        font-size: 22px;
+        padding: 0 10px;
+        font-size: 20px;
         font-weight: bold;
       }
     }
   }
   .tips{
-    margin-left: 60px;
+    margin-left: 50px;
+    font-size: 14px;
     view{
       display: flex;
       line-height: 15px;
@@ -28,6 +30,9 @@
         width: 15px;
         height: 15px;
         margin-right: 5px;
+      }
+      text{
+        padding-right: 5px;
       }
     }
   }

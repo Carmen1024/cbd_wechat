@@ -2,7 +2,7 @@
 
 import { formatDate } from '../../../utils/util'
 import { storeQueryList } from '../../../api/store'
-import { getContent, getDataParams,getPageParams,getPageTotal,getExtData } from '../../../utils/dataParams'
+import { getContent,getPageParams,getPageTotal,getExtData } from '../../../utils/dataParams'
 Page({
 
   /**
@@ -14,7 +14,10 @@ Page({
     total:0,
     showFoot:false,
     createTime:formatDate(new Date(),"YYYY-MM-DD")+" 00:00:00",
-    endTime:formatDate(new Date(),"YYYY-MM-DD")+" 23:59:59"
+    endTime:formatDate(new Date(),"YYYY-MM-DD")+" 23:59:59",
+    print_count:0,
+    finish_count:0,
+    break_count:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -38,9 +41,9 @@ Page({
       {"#gte":["pt_h_time"],"#lte":["pt_h_time"]},timeData,pageSize,pageIndex,false);
     storeQueryList(parmas).then(response=>{
       if(this.data.pageIndex==0){
-        ////print_count-打印总数量  finish_count-用完总数量 break_count-报损总数量
+        ////print_count-打印总数  finish_count-已用完数 break_count-报损数量
         const { print_count=0,finish_count=0,break_count=0} = getExtData(response);
-        const all = {"s_name":"全部",print_count,finish_count,break_count};
+        const all = {all:true,s_name:"门店总和",print_count,finish_count,break_count};
         this.setData({
           storeList:[all]
         })

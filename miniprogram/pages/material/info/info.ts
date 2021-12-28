@@ -46,9 +46,9 @@ Page({
       timeData,pageSize,pageIndex,false);
     materialQueryDetail(parmas).then(response=>{
       if(this.data.pageIndex==0){
-        ////print_count-打印总数量  finish_count-用完总数量 break_count-报损总数量
+        ////print_count-打印总数  finish_count-已用完数 break_count-报损数量
         const { print_count=0,finish_count=0,break_count=0} = getExtData(response);
-        const all = {"s_name":"全部",print_count,finish_count,break_count};
+        const all = {all:true,s_name:"门店总和",print_count,finish_count,break_count};
         this.setData({
           storeList:[all]
         })

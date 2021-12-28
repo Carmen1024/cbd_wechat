@@ -8,12 +8,24 @@
 
   <view class="indexMsg">
     <view class="title">
-      <image src="./../../images/logo_new.jpg"></image>
-      <text>日常信息监测</text>
+      <image class="logo" src="./../../images/logo_new.jpg"></image>
+      <text>督导，你好</text>
+      <!--  -->
     </view>
     <view class="tips">
-      <view><image src="./../../images/tip.png"></image>实时数据可能有短暂延迟</view>
-      <view><image src="./../../images/tip.png"></image>如数据有异常请及时联系管理员</view>
+      <view>
+        <image src="./../../images/tip.png"></image>
+        <text>实时数据可能有短暂延迟</text>
+      </view>
+      <!-- <view>
+        <image src="./../../images/tip.png"></image>
+        <text>如数据有异常请及时联系管理员</text>
+      </view> -->
+      <view>
+        <image src="./../../images/tip.png"></image>
+        <text bindtap="logout">如手机号变更，点此重新授权</text>
+        <image class="exit" bindtap="logout" src="./../../images/exit_icon.png"></image>
+      </view>
     </view>
   </view>
   <!-- 监测数据 -->

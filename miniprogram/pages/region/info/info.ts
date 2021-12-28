@@ -21,7 +21,7 @@ Component({
       u_region:'四川省成都市高新区',
       storeCount:0,
       materialCount:0,
-      // <!-- totalList print_count-打印总数量  finish_count-用完总数量 break_count-报损总数量 -->
+      // <!-- totalList print_count-打印总数  finish_count-已用完数 break_count-报损数量 -->
       totalList:{
         print_count:0,
         finish_count:0,

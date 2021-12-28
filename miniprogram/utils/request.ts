@@ -1,7 +1,6 @@
-import { getToken } from '../utils/auth'
-
+import { getToken,removeToken } from '../utils/auth'
 // 封装微信请求
-const request = ({ url, method, data })=> {
+const request = ({ url, method, data={} })=> {
 
   data = data ? (data["#content"]!=undefined ? data : {"#content":data}) : {"#content":{}};
   if (getToken()) {
@@ -18,6 +17,12 @@ const request = ({ url, method, data })=> {
               if (res.data["#code"] == "0000") {
                 console.log("接口返回成功",res.data)
                 resolve(res.data);
+              }else if (res.data["#code"] == "0013") {
+                console.log("token失效，需要重新登陆")
+                removeToken();
+                wx.redirectTo({
+                  url: '/pages/login/login',
+                })
               } else {
                 wx.showToast({
                   title: (res.data["#desc"] || 'Error'),

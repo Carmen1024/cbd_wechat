@@ -7,3 +7,6 @@ export const getToken = () =>{
 
 export const setToken = (token:String) =>  wx.setStorageSync('token',token)
 
+export const removeToken = () => wx.removeStorageSync('token');
+
+

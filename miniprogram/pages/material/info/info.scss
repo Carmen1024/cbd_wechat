@@ -50,35 +50,41 @@
           .hideItem{
             display: none;
           }
-          .title{
-            height: 30px;
-            line-height: 30px;
-            margin-right: 10px;
-            // F9CDAD
-            background-color: #c9d3fc;
-            text{
-              display: inline-block;
-              line-height: 30px;
-            }
-            text:first-child{
-              margin-right: 5px;
-              padding:0 5px;
-              font-weight: bold;
-              background-image: linear-gradient(to right, #c9d3fc , #5e7cf8);
-            }
-          }
+          // .title{
+          //   height: 30px;
+          //   line-height: 30px;
+          //   margin-right: 10px;
+          //   // F9CDAD
+          //   background-color: #f3c9cf;
+          //   text{
+          //     display: inline-block;
+          //     line-height: 30px;
+          //   }
+          //   text:first-child{
+          //     margin-right: 10px;
+          //     padding:0 10px;
+          //     font-weight: bold;
+          //     background-image: linear-gradient(to right, #f3c9cf , #f07182);
+          //   }
+          // }
           .item{
-            // "#f15369""#4fbdaa""#5169ca",
+            // "#f15369""#f9cdad""#4fbdaa",
             text{
               margin:5px 0;
-              padding-left:3px;
-              height: 20px;
-              line-height: 20px;
+              padding-left:6px;
+              height: 30px;
+              line-height: 30px;
               display: block;
-              border-left: solid 3px #5e7cf8;
-              // &:nth-child(2){
-              //   border-color: #4fbdaa;
-              // }
+              border-left: solid 4px #f15369;
+              background-image: linear-gradient(to right, #f5a9b3 , #f5d4d8);
+              &:nth-child(2){
+                border-color: #f9cdad;
+                background-image: linear-gradient(to right, #f8dbc6 , #f5ede7);
+              }
+              &:nth-child(3){
+                border-color: #4fbdaa;
+                background-image: linear-gradient(to right, #cbf1eb , #e8f8f5);
+              }
             }
           }
         }

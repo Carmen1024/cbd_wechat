@@ -2,8 +2,8 @@
 <view class="login-container">
   <view class="title" wx:if="{{!loading}}">
     <image src="./../../images/logo_new.jpg"></image>
+    <text>蜀信云茶</text>
     <text>督导小程序</text>
-    <text>日常信息监测</text>
   </view>
   <!-- <view class="title" wx:else="">
     <image src="./../../images/logo_new.jpg"></image>
@@ -25,5 +25,8 @@
   </view>
   <view class="tips" wx:elif="{{flag==2}}">
     <view>您的帐号正在后台审核，请等待！</view>
+    <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+      重新授权手机号
+    </button>
   </view>
 </view>

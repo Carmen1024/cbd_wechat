@@ -25,8 +25,8 @@ Page({
     },
     totalList2:[
       {label:'打印总数',value:'10000',percent:100},
-      {label:'报损总数',value:'1000',percent:10},
-      {label:'用完总数',value:'9000',percent:90},
+      {label:'报损数量',value:'1000',percent:10},
+      {label:'已用完数',value:'9000',percent:90},
     ],
     materialList:[],
     pageIndex:0,
