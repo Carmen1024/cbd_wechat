@@ -52,12 +52,13 @@ Page({
     const pageSize=10;
     let timeData = {
       // s_id:this.data.storeId,
+      is_his:false,
       createTime:this.data.createTime,
       endTime:this.data.endTime,
       s_id:"9d95c038dfd94116b54471c6284625d1",
     }
     let parmas = getPageParams(
-      {"#eq":["s_id"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
+      {"#eq":["s_id","is_his"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
       timeData,pageSize,pageIndex);
     storeQueryDetail(parmas).then(response=>{
       let newList:never[] = getContent(response);

@@ -37,7 +37,7 @@
       <text>管理区域</text>
     </view>
     <view class="mapInfo" bindtap="mapContext">
-      <view>{{u_region}}</view>
+      <view>查看门店所在区域</view>
       <image src="./../../../images/icon_right.png"></image>
     </view>
     </view>

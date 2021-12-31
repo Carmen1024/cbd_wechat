@@ -20,13 +20,13 @@
       <input type="number" model:value="{{phone}}" maxlength="13" placeholder="请输入手机号" />
       <button bindtap="nativeLogin">登录</button>
     </view>
-    <button bindtap="mobile" wx:else="">手机号登录</button>
+    <!-- <button bindtap="mobile" wx:else="">手机号登录</button> -->
     <!-- <button disabled="true" plain="true">手机号登录</button> -->
   </view>
   <view class="tips" wx:elif="{{flag==2}}">
     <view>您的帐号正在后台审核，请等待！</view>
-    <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <!-- <button type="primary" bindtap="resetPhone">
       重新授权手机号
-    </button>
+    </button> -->
   </view>
 </view>

@@ -151,3 +151,11 @@ export const getMonthDate=(time:number)=>{
   return { createTime,endTime };
 }
 
+//根据月份，获取时间
+export const getDateByMonth=(fullYear:number,month:number)=>{
+  const endOfMonth = new Date(fullYear, month, 0).getDate(); // 获取本月最后一天后一天
+  const createTime = `${fullYear}-${month<10?`0${month}`:month}-01 00:00:00`;
+  const endTime = `${fullYear}-${month<10?`0${month}`:month}-${endOfMonth} 23:59:59`;
+  return { createTime,endTime };
+}
+

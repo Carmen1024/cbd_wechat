@@ -8,28 +8,40 @@
       position: fixed;
       background-color: #fff;
       overflow: hidden;
-    }
-    .van-search{
-      width: calc(100% - 150px);
-      margin: 7px 20px 0 20px;
-      padding: 0;
-      background-color: #fff;
-      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
-      border-radius: 20px;
-      .van-search__content{
-        background: none;
+      display: flex;
+      align-items:center;
+      image{
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+      }
+      van-search{
+        width: calc(100% - 180px);
+        margin-left: 10px;
+        .van-search{
+          padding: 0;
+          background-color: #fff;
+          // box-shadow: 0 0 5px 1px rgba(202, 202, 202, 0.5);
+          border:solid 1px #005bac;
+          border-radius: 20px;
+          .van-search__content{
+            background: none;
+          }
+          .van-icon-search:before{
+            color:#005bac;
+          }
+        }
       }
     }
     .storeList{
       overflow: hidden;
       .storeItem{
-        margin: 10px 20px;
+        margin: 10px;
         padding: 10px;
         line-height: 30px;
-        box-shadow: 0 0 10px 2px rgb(235, 234, 234);
+        box-shadow: 0 0 5px 1px rgba(202, 202, 202, 0.5);
         border-radius: 5px;
         .default{
-
           display: flex;
           height: 60px;
           image{

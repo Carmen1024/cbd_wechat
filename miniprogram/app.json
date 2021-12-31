@@ -23,6 +23,7 @@
     "regionInfo": "/pages/region/info/info",
     "foot":"/components/foot/foot",
     "timeUtil":"/components/time/time",
+    "dateUtil":"/components/date/date",
     "van-button": "@vant/weapp/button/index",
     "van-search": "@vant/weapp/search/index",
     "van-progress": "@vant/weapp/progress/index",
@@ -31,7 +32,8 @@
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-calendar": "@vant/weapp/calendar/index",
-    "van-overlay": "@vant/weapp/overlay/index"
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-picker": "@vant/weapp/picker/index"
   },
   "permission": {
     "scope.userLocation": {

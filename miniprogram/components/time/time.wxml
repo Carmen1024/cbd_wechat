@@ -1,40 +1,79 @@
 <!-- 时间控制模板 -->
 <view class="container">
-  <image src="./../../images/time_icon2.png"></image>
-  <view class="dateItem">
-    <view class="dateType">
-      <van-dropdown-menu active-color="#005bac">
-        <van-dropdown-item 
-        bind:change="reset" 
-        model:value="{{ dateType }}" 
-        options="{{ dateTypeOption }}" />
-      </van-dropdown-menu>
-    </view>
-    <view class="dateValue">
-      <view wx:if="{{ dateType==0 }}" bindtap="chooseDate" class="dayDate">
-        <text>{{ dayDate }}</text>
+  <view class="timeBar">
+    <image src="./../../images/time_icon2.png"></image>
+    <view class="dateItem">
+      <view class="yearType">
+        <van-dropdown-menu active-color="#005bac">
+          <van-dropdown-item 
+          bind:change="resetYear" 
+          model:value="{{ yearType }}" 
+          options="{{ yearTypeOption }}" />
+        </van-dropdown-menu>
       </view>
-      <van-calendar 
-          show="{{ dateShow }}" 
-          bind:close="onClose" 
-          bind:confirm="onConfirm" 
+      <view class="dateType">
+        <van-dropdown-menu active-color="#005bac">
+          <van-dropdown-item 
+          bind:change="reset" 
+          model:value="{{ dateType }}" 
+          options="{{ dateTypeOption }}" />
+        </van-dropdown-menu>
+      </view>
+      <view class="dateValue">
+        <view wx:if="{{ dateType==0 }}" bindtap="chooseDate" class="dayDate">
+          <!-- <text>{{ dayDate }}</text> -->
+          <text>{{ dayCreateDate }} - {{ dayEndDate }}</text>
+        </view>
+        <!-- <van-calendar 
+            show="{{ dateShow }}" 
+            bind:close="onClose" 
+            bind:confirm="onConfirm" 
+            min-date="{{minDate}}"
+            max-date="{{maxDate}}"
+            color="#005bac"
+          /> -->
+        <van-calendar
+          show="{{ dateShow }}"
+          type="range"
+          bind:close="onClose"
+          allow-same-day="true"
+          first-day-of-week="1"
+          bind:confirm="onConfirm"
           min-date="{{minDate}}"
           max-date="{{maxDate}}"
           color="#005bac"
+          default-date="{{defaultDate}}"
         />
-      <van-dropdown-menu wx:if="{{ dateType==1 }}" active-color="#005bac">
-        <van-dropdown-item
-          bind:change="reset" 
-          model:value="{{ weekDate }}"
-          options="{{ weekOption }}" />
-      </van-dropdown-menu>
-      <van-dropdown-menu wx:if="{{ dateType==2 }}" active-color="#005bac">
-        <van-dropdown-item 
-          bind:change="reset" 
-          model:value="{{ monthDate }}" 
-          options="{{ monthOption }}" />
-      </van-dropdown-menu>
+        <van-dropdown-menu wx:if="{{ dateType==1 }}" active-color="#005bac">
+          <van-dropdown-item
+            bind:change="reset" 
+            model:value="{{ weekDate }}"
+            options="{{ weekOption }}" />
+        </van-dropdown-menu>
+        <van-dropdown-menu wx:if="{{ dateType==2 }}" active-color="#005bac">
+          <van-dropdown-item 
+            bind:change="reset" 
+            model:value="{{ monthDate }}" 
+            options="{{ monthOption }}" />
+        </van-dropdown-menu>
+      </view>
     </view>
+  </view>
+  <view class="shortcutBar">
+    <text 
+      wx:for="{{weekButtonList}}"
+      wx:key="buttonList"
+      data-item="{{item}}"
+      bindtap="shortcutSet"
+      class="{{item.buttonIndex==buttonIndex?'active':''}}"
+    >{{item.label}}</text>
+    <text 
+      wx:for="{{monthButtonList}}"
+      wx:key="buttonList"
+      data-item="{{item}}"
+      bindtap="shortcutSet"
+      class="{{item.buttonIndex==buttonIndex?'active':''}}"
+    >{{item.label}}</text>
   </view>
 </view>
 

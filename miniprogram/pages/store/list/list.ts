@@ -13,7 +13,10 @@ Page({
     total:0,
     showFoot:false,
     statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
-    menuWidth:wx.getMenuButtonBoundingClientRect()['width']
+    menuWidth:wx.getMenuButtonBoundingClientRect()['width'],
+    menuTop:wx.getMenuButtonBoundingClientRect()['top'],
+    menuHeight:wx.getMenuButtonBoundingClientRect()['height'],
+    menuBottom:wx.getMenuButtonBoundingClientRect()['bottom']+10,
   },
   /**
    * 生命周期函数--监听页面加载

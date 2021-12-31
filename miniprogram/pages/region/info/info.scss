@@ -4,13 +4,14 @@
   width: 100vw;
   .msgInfo{
     display: flex;
+    padding:0 5px;
     .msgItem{
       position: relative;
       width: 50%;
-      margin:10px;
+      margin:10px 5px;
       padding:10px;
       height: 100px;
-      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
+      box-shadow: 0 0 5px 1px rgba(202, 202, 202, 0.5);
       border-radius: 5px;
       image{
         position:absolute;
@@ -51,13 +52,13 @@
       position: relative;
       margin: 10px;
       padding:10px;
-      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
+      box-shadow: 0 0 5px 1px rgba(202, 202, 202, 0.5);
       border-radius: 5px;
       display: flex;
       .title{
         flex:1;
         margin:10px;
-        border-right:solid 2px #ebebeb;
+        border-right:solid 2px rgba(150, 149, 149, 0.1);
         text{
           font-size: 16px;
           line-height: 50px;
@@ -90,7 +91,7 @@
       margin:10px;
       padding:10px;
       height: 40px;
-      box-shadow: 0 0 10px 2px rgb(235, 234, 234);
+      box-shadow: 0 0 5px 1px rgba(202, 202, 202, 0.5);
       border-radius: 5px;
       line-height: 40px;
       font-size: 16px;

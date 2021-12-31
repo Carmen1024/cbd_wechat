@@ -3,7 +3,8 @@
   督导所有管辖门店列表，点击进入门店详细信息页面
 -->
 <view class="container">
-  <view class="selectMod" style="padding-top: {{statusBarHeight}}px;">
+  <view class="selectMod" style="padding-top: {{menuTop}}px;">
+    <image src="./../../../images/store_bg.png"></image>
     <van-search 
       value="{{ s_name }}" 
       placeholder="输入门店名称" 
@@ -11,7 +12,7 @@
       bind:search="onSearch"
     />
   </view>
-  <view class="storeList" style="padding-top: {{statusBarHeight+50}}px;">
+  <view class="storeList" style="padding-top: {{menuBottom}}px;">
     <view class="storeItem" wx:for="{{ storeList }}" bindtap="toInfo" data-item="{{item}}">
       <view class="default">
         <image src="./../../../images/logo_new.jpg"></image>

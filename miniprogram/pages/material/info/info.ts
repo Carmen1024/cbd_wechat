@@ -38,11 +38,12 @@ Page({
     const pageSize=10;
     let timeData = {
       m_id:this.data.m_Id,
+      is_his:false,
       createTime:this.data.createTime,
       endTime:this.data.endTime,
     }
     let parmas = getPageParams(
-      {"#eq":["m_id"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
+      {"#eq":["m_id","is_his"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
       timeData,pageSize,pageIndex,false);
     materialQueryDetail(parmas).then(response=>{
       if(this.data.pageIndex==0){

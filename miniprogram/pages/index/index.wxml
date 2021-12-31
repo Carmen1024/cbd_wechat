@@ -5,30 +5,50 @@
   如果后台督导已激活，则自动展示信息：
 -->
 <view class="container">
-
-  <view class="indexMsg">
-    <view class="title">
-      <image class="logo" src="./../../images/logo_new.jpg"></image>
-      <text>督导，你好</text>
-      <!--  -->
-    </view>
-    <view class="tips">
-      <view>
-        <image src="./../../images/tip.png"></image>
-        <text>实时数据可能有短暂延迟</text>
+    <view class="indexMsg" style="padding-top:{{menuTop}}px">
+      <view class="titleBar" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">
+        <image class="logo" src="./../../images/logo_icon.png"></image>
+        <text>蜀信云茶</text>
       </view>
-      <!-- <view>
-        <image src="./../../images/tip.png"></image>
-        <text>如数据有异常请及时联系管理员</text>
-      </view> -->
-      <view>
-        <image src="./../../images/tip.png"></image>
-        <text bindtap="logout">如手机号变更，点此重新授权</text>
-        <image class="exit" bindtap="logout" src="./../../images/exit_icon.png"></image>
+      <view class="titleDetail">
+        <view class="userinfo">
+          <!-- <image class="logo" src="./../../images/logo_new.jpg"></image>
+          <text>督导，你好</text> -->
+          <block wx:if="{{canIUseOpenData}}">
+            <view class="userinfo-avatar">
+              <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view class="userinfo-nickname">
+              <open-data type="userNickName"></open-data>
+            </view>
+          </block>
+          <block wx:elif="{{!hasUserInfo}}">
+              <image class="userinfo-avatar" src="./../../images/logo_new.jpg"></image>
+              <text class="userinfo-nickname">督导</text>
+          </block>
+          <block wx:else>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+          </block>
+        </view>
+        <view class="tips">
+          <view>
+            <image src="./../../images/tip.png"></image>
+            <text>实时数据可能有短暂延迟</text>
+          </view>
+          <!-- <view>
+            <image src="./../../images/tip.png"></image>
+            <text>如数据有异常请及时联系管理员</text>
+          </view> -->
+          <view>
+            <image src="./../../images/tip.png"></image>
+            <text bindtap="logout">如手机号变更，点此重新授权</text>
+            <image class="exit" bindtap="logout" src="./../../images/exit_icon.png"></image>
+          </view>
+        </view>
       </view>
     </view>
-  </view>
-  <!-- 监测数据 -->
-  <regionInfo />
-  <!-- 引入 -->
+    <!-- 监测数据 -->
+    <regionInfo />
+    <!-- 引入 -->
 </view>

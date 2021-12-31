@@ -55,11 +55,12 @@ Component({
   methods: {
     getList(){
       let timeData = {
+        is_his:false,
         createTime:formatDate(new Date(),"YYYY-MM-DD")+" 00:00:00",
         endTime:formatDate(new Date(),"YYYY-MM-DD")+" 23:59:59",
       }
       let parmas = getPageParams(
-        {"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
+        {"#eq":["is_his"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
         timeData,1,0,false);
         storeQueryList(parmas).then(response=>{
           const { print_count=0,finish_count=0,break_count=0} = getExtData(response);

@@ -1,4 +1,7 @@
 // index.ts
+// "navigationBarTitleText": "蜀信云茶",
+// "navigationBarTextStyle":"white",
+// "navigationBarBackgroundColor":"#005bac",
 // 获取应用实例
 const app = getApp<IAppOption>()
 
@@ -13,6 +16,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
+    menuBottom:wx.getMenuButtonBoundingClientRect()['bottom'],
+    menuTop:wx.getMenuButtonBoundingClientRect()['top'],
+    menuHeight:wx.getMenuButtonBoundingClientRect()['height'],
+    // menuClient(type:string):string{
+    //   return wx.getMenuButtonBoundingClientRect()[type] + "px";
+    // }
   },
   // 事件处理函数
   onLoad() {

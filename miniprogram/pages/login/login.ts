@@ -1,6 +1,6 @@
 // pages/login/login.ts
-import { getToken,setToken } from '../../utils/auth';
-import { login,loginByPhone,loginByWxPhone } from '../../api/user'
+import { getToken,setToken,removeToken } from '../../utils/auth';
+import { login,loginByPhone,loginByWxPhone,loginout } from '../../api/user'
 import { getContent, getDataParams } from '../../utils/dataParams';
 
 Page({
@@ -70,6 +70,14 @@ Page({
   // 授权微信手机号登录
   getPhoneNumber (e) {
     console.log("手机code：",e.detail.code);
+    if(!e.detail.code){
+      wx.showToast({
+        icon:'error',
+        title:'请升级微信版本',
+        duration:3000
+      })
+      return;
+    }
     const params = getDataParams(
       {"#eq":["access_token","js_code"]},
       {access_token:this.data.access_token,"js_code":e.detail.code}
@@ -87,6 +95,16 @@ Page({
           url: '../index/index',
         })
       }
+    })
+  },
+  resetPhone(){
+    loginout().then(response=>{
+      //督导
+      // console.log(response);
+      removeToken();
+      wx.reLaunch({
+        url: '../login/login',
+      })
     })
   },
   // 自主填写手机号登录

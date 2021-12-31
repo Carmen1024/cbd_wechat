@@ -34,11 +34,13 @@ Page({
     let pageIndex = this.data.pageIndex;
     const pageSize=10;
     let timeData = {
+      is_his:false,
       createTime:this.data.createTime,
       endTime:this.data.endTime,
     }
     let parmas = getPageParams(
-      {"#gte":["pt_h_time"],"#lte":["pt_h_time"]},timeData,pageSize,pageIndex,false);
+      {"#eq":["is_his"],"#gte":["pt_h_time"],"#lte":["pt_h_time"]},
+      timeData,pageSize,pageIndex,false);
     storeQueryList(parmas).then(response=>{
       if(this.data.pageIndex==0){
         ////print_count-打印总数  finish_count-已用完数 break_count-报损数量

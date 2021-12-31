@@ -14,6 +14,9 @@ Page({
     materialList:[],
     statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
     menuWidth:wx.getMenuButtonBoundingClientRect()['width'],
+    menuTop:wx.getMenuButtonBoundingClientRect()['top'],
+    menuBottom:wx.getMenuButtonBoundingClientRect()['bottom']+10,
+    menuHeight:wx.getMenuButtonBoundingClientRect()['height'],
     showFoot:false,
   },
   // 查询物料
